@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+  <title>My HTMX Test Page</title>
+</head>
+
+<body>
+  <div class="p-2 flex">
+    <p class="p-3 text-3xl text-white bg-blue-700 w-full">Hello World</p>
+  </div>
+  
+  <div class="flex flex-nowrap p-4">
+    {% for item in n_items %}
+  <div class="flex w-full h-50 bg-gray-300 p-10">
+    <button name="add" id="b_add_{{item}}" hx-param="value" type="button"
+      class="w-32 h-10 justify-center bg-red-700 rounded-md text-white" hx-trigger="click" hx-get="/change/add"
+      hx-target="#count_{{item}}" hx-swap="outerHTML" hx-include="[name ='count_{{item}}']">
+      Add
+    </button>
+
+    <input type="text" hx-param="value" name="count_{{item}}" id="count_{{item}}" value="0"
+      class="w-32 h-10 text-black text-center align-middle bg-white ml-10 mr-10" />
+
+    <button name="subtract" id="b_sub_{{item}}" hx-param="value" type="button"
+      class="w-32 h-10 justify-center bg-red-700 rounded-md text-white" hx-trigger="click" hx-get="/change/subtract"
+      hx-target="#count_{{item}}" hx-swap="outerHTML" hx-include="[name ='count_{{item}}']">
+      Subtract
+    </button>
+  </div>
+  {% endfor %}
+  </div>
+
+  <div class="p-4">
+    
+  <div class="flex w-full h-50 bg-gray-300 p-5">
+    <input type="text" name="inches" placeholder="inches" id="inches"
+      class="w-32 h-10 text-black text-center align-middle bg-white ml-10 mr-10"
+      hx-trigger="change"
+      hx-get="/convert/"
+      hx-target="#cm"
+      hx-swap="outerHTML" />
+  </div>
+
+  <div class="flex w-full h-50 bg-gray-300 p-5">
+    <input type="text" name="cm" placeholder="cm" id="cm"
+      class="w-32 h-10 text-black text-center align-middle bg-white ml-10 mr-10"
+      hx-trigger="change"
+      hx-get="/convert/"
+      hx-target="#inches"
+      hx-swap="outerHTML" />
+  </div>
+
+  </div>
+
+</body>
+
+</html>
