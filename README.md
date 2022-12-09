@@ -1,4 +1,6 @@
-# HTMX-counter-two-way-binding-example using FAST API and HTMX. No Javascript used at all except the CDN scripts for HTMX and Tailwind CSS.
+# HTMX-counter-two-way-binding-example using FAST API and HTMX. 
+
+No Javascript used at all except the CDN scripts for HTMX and Tailwind CSS.
 
 This is a simple implementation of:
 1. A counter
